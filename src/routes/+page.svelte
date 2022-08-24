@@ -4,12 +4,11 @@
     RefreshIcon,
     TrashIcon,
   } from '@rgossiaux/svelte-heroicons/outline'
-
   import { enhance } from '$root/lib/form'
   import { failure, success } from '$root/lib/toast'
-  import type { PostItemType } from '$root/types'
+  import type { PageServerData } from './$types'
 
-  export let posts: PostItemType[] = []
+  export let data: PageServerData
 </script>
 
 <svelte:head>
@@ -47,7 +46,7 @@
   <section>
     <h2>Posts</h2>
     <div class="posts">
-      {#each posts as post}
+      {#each data.posts as post}
         <article class="post">
           <a href="/edit/{post.slug}">{post.title}</a>
           <form

@@ -1,22 +1,12 @@
 import { createPost } from '$root/lib/posts'
-import type { RequestHandler } from '@sveltejs/kit'
+import type { Action } from './$types'
 
-export const POST: RequestHandler = async ({ request }) => {
+export const POST: Action = async ({ request }) => {
   const form = await request.formData()
   const slug = String(form.get('slug'))
   const markdown = String(form.get('markdown'))
 
-  try {
-    await createPost(slug, markdown)
-  } catch (error) {
-    return {
-      status: 400,
-      body: { error: error.message },
-    }
-  }
+  await createPost(slug, markdown)
 
-  return {
-    status: 303,
-    headers: { location: '/' },
-  }
+  return { location: '/' }
 }

@@ -1,13 +1,12 @@
 <script lang="ts">
   import Editor from '$root/components/editor/index.svelte'
+  import type { PageServerData } from '.svelte-kit/types/src/routes/$types'
 
-  export let slug = ''
-  export let title = ''
-  export let markdown = ''
+  export let data: PageServerData
 </script>
 
 <svelte:head>
-  <title>{title}</title>
+  <title>{data.title}</title>
 </svelte:head>
 
-<Editor {slug} {title} {markdown} />
+<Editor slug={data.slug} title={data.title} markdown={data.markdown} />

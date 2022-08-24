@@ -1,29 +1,18 @@
 import { getPosts, removePost, updatePosts } from '$root/lib/posts'
-import type { RequestHandler } from '@sveltejs/kit'
+import type { PageServerLoad, Action } from './$types'
 
-export const GET: RequestHandler = async () => {
+export const load: PageServerLoad = async () => {
   const posts = await getPosts()
-
-  return {
-    status: 200,
-    headers: { 'Cache-Control': `max-age=0, s-maxage=60` },
-    body: { posts },
-  }
+  return { posts }
 }
 
-export const POST: RequestHandler = async () => {
+export const POST: Action = async () => {
   updatePosts()
-  return {}
 }
 
-export const DEL: RequestHandler = async ({ request }) => {
+export const DELETE: Action = async ({ request }) => {
   const form = await request.formData()
   const slug = String(form.get('slug'))
 
   await removePost(slug)
-
-  return {
-    status: 303,
-    headers: { location: '/' },
-  }
 }

@@ -3,8 +3,8 @@
 
   async function rate(): Promise<RateAPIResponseType> {
     const response = await fetch('/api/measure')
-    const { limit } = await response.json()
-    return limit
+    const rate = await response.json()
+    return rate
   }
 </script>
 
