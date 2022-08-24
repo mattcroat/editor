@@ -3,7 +3,7 @@ import { webSocketServer } from './socket/plugin.js'
 
 /** @type {import('vite').UserConfig} */
 const config = {
-  plugins: [sveltekit(), webSocketServer],
+	plugins: [sveltekit(), webSocketServer],
 }
 
 export default config

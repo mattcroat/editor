@@ -17,37 +17,37 @@ import rehypeCodeTitles from 'rehype-code-titles'
 import type { FrontMatterType } from '$root/types'
 
 type ContentType = {
-  content: string
-  frontmatter: FrontMatterType
+	content: string
+	frontmatter: FrontMatterType
 }
 
 export async function markdownToHTML(markdown: string): Promise<ContentType> {
-  const { content, data } = matter(markdown)
+	const { content, data } = matter(markdown)
 
-  const result = await unified()
-    .use(fromMarkdown)
-    .use([
-      remarkGfm,
-      remarkHeadings,
-      remarkSlug,
-      remarkSmartypants,
-      [remarkTableofContents, { tight: true }],
-    ])
-    .use(fromMarkdownToHtml, { allowDangerousHtml: true })
-    .use(rehypeCodeTitles)
-    .use(rehypePrism)
-    .use(parseHtmlAndMarkdown)
-    .use(toHtml)
-    .process(content)
-  const processedMarkdown = result.value
+	const result = await unified()
+		.use(fromMarkdown)
+		.use([
+			remarkGfm,
+			remarkHeadings,
+			remarkSlug,
+			remarkSmartypants,
+			[remarkTableofContents, { tight: true }],
+		])
+		.use(fromMarkdownToHtml, { allowDangerousHtml: true })
+		.use(rehypeCodeTitles)
+		.use(rehypePrism)
+		.use(parseHtmlAndMarkdown)
+		.use(toHtml)
+		.process(content)
+	const processedMarkdown = result.value
 
-  return {
-    content: processedMarkdown as string,
-    frontmatter: data as FrontMatterType,
-  }
+	return {
+		content: processedMarkdown as string,
+		frontmatter: data as FrontMatterType,
+	}
 }
 
 export async function frontMatter(markdown: string): Promise<FrontMatterType> {
-  const { data: frontMatter } = matter(markdown)
-  return frontMatter as FrontMatterType
+	const { data: frontMatter } = matter(markdown)
+	return frontMatter as FrontMatterType
 }

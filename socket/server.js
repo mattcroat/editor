@@ -12,12 +12,12 @@ const server = createServer(app)
 const io = new Server(server)
 
 io.on('connection', (socket) => {
-  // receive a message from the client
-  socket.on('updatePreview', async (markdown) => {
-    const html = await markdownToHTML(markdown)
-    // send message to the client
-    socket.emit('previewUpdate', html)
-  })
+	// receive a message from the client
+	socket.on('updatePreview', async (markdown) => {
+		const html = await markdownToHTML(markdown)
+		// send message to the client
+		socket.emit('previewUpdate', html)
+	})
 })
 
 // https://github.com/sveltejs/kit/tree/master/packages/adapter-node#custom-server
