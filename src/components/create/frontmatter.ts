@@ -1,13 +1,13 @@
 function getDate() {
-  const [month, day, year] = new Date()
-    .toLocaleString('en', {
-      year: 'numeric',
-      month: 'numeric',
-      day: 'numeric',
-    })
-    .split('/')
+	const [month, day, year] = new Date()
+		.toLocaleString('en', {
+			year: 'numeric',
+			month: 'numeric',
+			day: 'numeric',
+		})
+		.split('/')
 
-  return `${year}-${month}-${day}`
+	return `${year}-${month}-${day}`
 }
 
 export const frontmatter = `
@@ -39,5 +39,5 @@ export const frontmatter = `
 
 	{% video src="video.mp4" %}
 `
-  .trim()
-  .replace(/\t/g, '')
+	.trim()
+	.replace(/\t/g, '')
