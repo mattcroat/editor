@@ -1,3 +1,5 @@
+import { GH_TOKEN } from '$env/static/private'
+
 import { markdownToHTML, frontMatter } from './markdown'
 import { mainBranch, postsDataUrl, postsUrl } from './config'
 import { supabase } from './supabase'
@@ -14,7 +16,7 @@ import type {
 const headers = {
 	// GitHub suggests to include the API version
 	Accept: 'application/vnd.github.v3+json',
-	Authorization: `token ${process.env.GH_TOKEN}`,
+	Authorization: `token ${GH_TOKEN}`,
 }
 
 /**
