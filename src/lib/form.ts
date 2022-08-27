@@ -40,7 +40,7 @@ type Parameters = {
 
 type Destroy = { destroy: () => void }
 
-export const enhance: Enhance = (
+export const enhanceForm: Enhance = (
 	form,
 	{ pending, error, result, confirmation } = {}
 ) => {

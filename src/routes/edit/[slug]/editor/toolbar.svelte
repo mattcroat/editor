@@ -7,7 +7,7 @@
 		SaveIcon,
 	} from '@rgossiaux/svelte-heroicons/outline'
 
-	import { enhance } from '$lib/form'
+	import { enhanceForm } from '$lib/form'
 	import { fileUrl } from '$lib/config'
 	import { failure, success } from '$lib/toast'
 	import type { EditorPostType } from '$lib/types'
@@ -25,7 +25,7 @@
 
 	<form
 		method="post"
-		use:enhance={{
+		use:enhanceForm={{
 			pending: async () => {
 				success(`💾 ${$post.slug}.md saved`)
 			},

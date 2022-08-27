@@ -3,7 +3,7 @@
 	import { goto } from '$app/navigation'
 	import { ArrowLeftIcon, SaveIcon } from '@rgossiaux/svelte-heroicons/outline'
 
-	import { enhance } from '$lib/form'
+	import { enhanceForm } from '$lib/form'
 	import { failure, success } from '$lib/toast'
 	import type { EditorPostType } from '$lib/types'
 
@@ -24,7 +24,7 @@
 	<span class="title">{title}</span>
 	<form
 		method="post"
-		use:enhance={{
+		use:enhanceForm={{
 			pending: async () => {
 				success(`💾 Saved ${title}.md`)
 			},
