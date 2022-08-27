@@ -1,4 +1,4 @@
-import { createPost } from '$root/lib/posts'
+import { createPost } from '$lib/posts'
 import type { Action } from './$types'
 
 export const POST: Action = async ({ request }) => {

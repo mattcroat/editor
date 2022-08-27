@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getContext } from 'svelte'
 	import { ChevronDoubleRightIcon } from '@rgossiaux/svelte-heroicons/outline'
-	import type { EditorPostType } from '$root/types'
+	import type { EditorPostType } from '$lib/types'
 
 	const post: EditorPostType = getContext('post')
 

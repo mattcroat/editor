@@ -1,4 +1,4 @@
-import { editPost, getPost } from '$root/lib/posts'
+import { editPost, getPost } from '$lib/posts'
 import type { PageServerLoad, Action } from './$types'
 
 export const load: PageServerLoad = async ({ params }) => {

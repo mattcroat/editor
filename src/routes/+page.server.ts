@@ -1,4 +1,4 @@
-import { getPosts, removePost, updatePosts } from '$root/lib/posts'
+import { getPosts, removePost, updatePosts } from '$lib/posts'
 import type { PageServerLoad, Action } from './$types'
 
 export const load: PageServerLoad = async () => {

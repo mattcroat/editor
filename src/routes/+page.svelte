@@ -4,8 +4,8 @@
 		RefreshIcon,
 		TrashIcon,
 	} from '@rgossiaux/svelte-heroicons/outline'
-	import { enhance } from '$root/lib/form'
-	import { failure, success } from '$root/lib/toast'
+	import { enhance } from '$lib/form'
+	import { failure, success } from '$lib/toast'
 	import type { PageServerData } from './$types'
 
 	export let data: PageServerData

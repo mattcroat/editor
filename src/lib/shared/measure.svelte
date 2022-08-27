@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { RateAPIResponseType } from '$root/types'
+	import type { RateAPIResponseType } from '$lib/types'
 
 	async function rate(): Promise<RateAPIResponseType> {
 		const response = await fetch('/api/measure')

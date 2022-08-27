@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { SvelteToast } from '@zerodevx/svelte-toast'
 
-	import Measure from '$root/components/measure/index.svelte'
-	import '$root/styles/global.css'
+	import Measure from '$lib/shared/measure.svelte'
+	import '../styles/app.css'
 </script>
 
 <Measure />

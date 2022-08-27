@@ -7,10 +7,10 @@
 		SaveIcon,
 	} from '@rgossiaux/svelte-heroicons/outline'
 
-	import { enhance } from '$root/lib/form'
-	import { fileUrl } from '$root/lib/config'
-	import { failure, success } from '$root/lib/toast'
-	import type { EditorPostType } from '$root/types'
+	import { enhance } from '$lib/form'
+	import { fileUrl } from '$lib/config'
+	import { failure, success } from '$lib/toast'
+	import type { EditorPostType } from '$lib/types'
 
 	const post: EditorPostType = getContext('post')
 	const viewUrl = `${fileUrl}/${$post.slug}/${$post.slug}.md`

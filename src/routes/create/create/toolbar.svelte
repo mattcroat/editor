@@ -3,9 +3,9 @@
 	import { goto } from '$app/navigation'
 	import { ArrowLeftIcon, SaveIcon } from '@rgossiaux/svelte-heroicons/outline'
 
-	import { enhance } from '$root/lib/form'
-	import { failure, success } from '$root/lib/toast'
-	import type { EditorPostType } from '$root/types'
+	import { enhance } from '$lib/form'
+	import { failure, success } from '$lib/toast'
+	import type { EditorPostType } from '$lib/types'
 
 	const post: EditorPostType = getContext('post')
 
