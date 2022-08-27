@@ -14,7 +14,7 @@ import remarkTableofContents from 'remark-toc'
 import rehypePrism from 'rehype-prism-plus'
 import rehypeCodeTitles from 'rehype-code-titles'
 
-import type { FrontMatterType } from '$root/types'
+import type { FrontMatterType } from '$lib/types'
 
 type ContentType = {
 	content: string

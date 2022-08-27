@@ -4,8 +4,8 @@
 		RefreshIcon,
 		TrashIcon,
 	} from '@rgossiaux/svelte-heroicons/outline'
-	import { enhance } from '$root/lib/form'
-	import { failure, success } from '$root/lib/toast'
+	import { enhanceForm } from '$lib/form'
+	import { failure, success } from '$lib/toast'
 	import type { PageServerData } from './$types'
 
 	export let data: PageServerData
@@ -28,7 +28,7 @@
 			<div class="update-posts">
 				<form
 					method="post"
-					use:enhance={{
+					use:enhanceForm={{
 						pending: async () => success(`👻 Updating posts.json`),
 						error: async ({ response }) => {
 							const { error } = await response.json()
@@ -52,7 +52,7 @@
 					<form
 						action="?_method=delete"
 						method="post"
-						use:enhance={{
+						use:enhanceForm={{
 							pending: async () => success(`👻 ${post.slug}.md removed`),
 							error: async ({ response }) => {
 								const { error } = await response.json()

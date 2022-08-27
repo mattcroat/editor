@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getContext } from 'svelte'
 	import { io } from 'socket.io-client'
-	import type { EditorPostType } from '$root/types'
+	import type { EditorPostType } from '$lib/types'
 
 	const socket = io()
 	const post: EditorPostType = getContext('post')

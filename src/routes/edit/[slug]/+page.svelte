@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Editor from '$root/components/editor/index.svelte'
-	import type { PageServerData } from '.svelte-kit/types/src/routes/$types'
+	import Editor from './editor/index.svelte'
+	import type { PageServerData } from './$types'
 
 	export let data: PageServerData
 </script>

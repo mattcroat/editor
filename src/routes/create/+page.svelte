@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Editor from '$root/components/create/index.svelte'
+	import Editor from './create/index.svelte'
 </script>
 
 <svelte:head>

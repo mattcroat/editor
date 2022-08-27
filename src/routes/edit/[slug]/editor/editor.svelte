@@ -6,7 +6,7 @@
 	import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker'
 	import editorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker'
 	import type monaco from 'monaco-editor'
-	import type { EditorPostType } from '$root/types'
+	import type { EditorPostType } from '$lib/types'
 
 	let editorEl: HTMLDivElement
 	let editor: monaco.editor.IStandaloneCodeEditor

@@ -1,52 +1,50 @@
 <script lang="ts">
 	import { getContext } from 'svelte'
+	import { goto } from '$app/navigation'
+	import { ArrowLeftIcon, SaveIcon } from '@rgossiaux/svelte-heroicons/outline'
 
-	import {
-		ArrowLeftIcon,
-		EyeIcon,
-		SaveIcon,
-	} from '@rgossiaux/svelte-heroicons/outline'
-
-	import { enhance } from '$root/lib/form'
-	import { fileUrl } from '$root/lib/config'
-	import { failure, success } from '$root/lib/toast'
-	import type { EditorPostType } from '$root/types'
+	import { enhanceForm } from '$lib/form'
+	import { failure, success } from '$lib/toast'
+	import type { EditorPostType } from '$lib/types'
 
 	const post: EditorPostType = getContext('post')
-	const viewUrl = `${fileUrl}/${$post.slug}/${$post.slug}.md`
+
+	function match(regexp: RegExp, content: string) {
+		return regexp.test(content) ? content.match(regexp)[1].trim() : ''
+	}
+
+	$: title = match(/title: (.*)/, $post.markdown)
+	$: slug = match(/slug: (.*)/, $post.markdown)
 </script>
 
 <div class="toolbar">
 	<a class="back" href="/">
 		<ArrowLeftIcon width="24" height="24" />
 	</a>
-
-	<span class="title">{$post.title}</span>
-
+	<span class="title">{title}</span>
 	<form
 		method="post"
-		use:enhance={{
+		use:enhanceForm={{
 			pending: async () => {
-				success(`💾 ${$post.slug}.md saved`)
+				success(`💾 Saved ${title}.md`)
 			},
 			error: async ({ response }) => {
 				const { error } = await response.json()
 				failure(error)
 			},
+			result: async () => {
+				await new Promise((resolve) => setTimeout(resolve, 2000))
+				goto('/')
+			},
 		}}
 	>
-		<input type="hidden" name="save" />
+		<input type="hidden" name="slug" value={slug} />
 		<input type="hidden" name="markdown" value={$post.markdown} />
 		<button class="save" type="submit">
 			<SaveIcon width="24" height="24" />
 			<span>Save</span>
 		</button>
 	</form>
-
-	<a class="view" href={viewUrl}>
-		<EyeIcon width="24" height="24" />
-		<span>View</span>
-	</a>
 </div>
 
 <style>
@@ -68,21 +66,19 @@
 		display: flex;
 		align-items: center;
 		padding: 0 var(--spacing-24);
-		font-size: var(--spacing-24);
+		font-size: var(--font-24);
 		font-weight: 700;
 		border-right: 1px solid hsl(0 0% 20%);
 	}
 
-	.save,
-	.view {
+	.save {
 		display: flex;
 		gap: var(--spacing-4);
 		align-items: center;
 		font-size: var(--font-16);
 	}
 
-	.save span,
-	.view span {
+	.save span {
 		padding-top: 0.2rem;
 	}
 
